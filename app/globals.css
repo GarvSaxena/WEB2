@@ -1,0 +1,180 @@
+/**
+ * app/globals.css — Global Stylesheet
+ *
+ * Clean, neutral design system.
+ * Light mode default. Dark mode via the .dark class on <html>.
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── CSS Custom Properties (Design Tokens) ──────────────────────────────── */
+:root {
+  /* Light mode defaults */
+  --color-bg:       #ffffff;
+  --color-bg-subtle:#fafafa;
+  --color-bg-muted: #f4f4f5;
+  --color-border:   #e4e4e7;
+  --color-text:     #18181b;
+  --color-text-muted:#71717a;
+  --color-accent:   #18181b;
+
+  --font-sans:    var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-display), var(--font-inter), sans-serif;
+}
+
+.dark {
+  /* Dark mode overrides */
+  --color-bg:       #18181b;
+  --color-bg-subtle:#27272a;
+  --color-bg-muted: #3f3f46;
+  --color-border:   #3f3f46;
+  --color-text:     #fafafa;
+  --color-text-muted:#a1a1aa;
+  --color-accent:   #fafafa;
+}
+
+/* ── Base Resets ─────────────────────────────────────────────────────────── */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  /* Clean scrollbar */
+  ::-webkit-scrollbar        { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track  { background: var(--color-bg-subtle); }
+  ::-webkit-scrollbar-thumb  { background: var(--color-border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-text-muted); }
+}
+
+/* ── Component Classes ────────────────────────────────────────────────────── */
+@layer components {
+
+  /* ── Layout ──────────────────────────────────────────────────────────── */
+  .container-section {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* ── Buttons ─────────────────────────────────────────────────────────── */
+
+  /* Primary: filled charcoal */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-lg
+           text-sm font-semibold text-white bg-accent-900
+           border border-accent-900
+           transition-all duration-150 ease-in-out
+           hover:bg-accent-800 hover:border-accent-800
+           active:scale-[0.98]
+           disabled:opacity-40 disabled:cursor-not-allowed
+           dark:bg-accent-50 dark:text-accent-900 dark:border-accent-50
+           dark:hover:bg-white;
+  }
+
+  /* Secondary: outlined */
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-lg
+           text-sm font-semibold text-accent-800 bg-transparent
+           border border-accent-300
+           transition-all duration-150 ease-in-out
+           hover:bg-accent-50 hover:border-accent-400
+           active:scale-[0.98]
+           dark:text-accent-200 dark:border-accent-700
+           dark:hover:bg-accent-800 dark:hover:border-accent-600;
+  }
+
+  /* Ghost: no border, subtle hover */
+  .btn-ghost {
+    @apply inline-flex items-center gap-1.5 px-3 py-2 rounded-lg
+           text-sm font-medium text-accent-600 bg-transparent
+           transition-all duration-150 ease-in-out
+           hover:bg-accent-100 hover:text-accent-900
+           dark:text-accent-400 dark:hover:bg-accent-800 dark:hover:text-accent-100;
+  }
+
+  /* ── Navigation ─────────────────────────────────────────────────────── */
+
+  /* Public nav link */
+  .pub-nav-link {
+    @apply relative px-3 py-1.5 text-sm font-medium text-accent-600
+           rounded-md transition-all duration-150
+           hover:text-accent-900 hover:bg-accent-100
+           dark:text-accent-400 dark:hover:text-accent-100 dark:hover:bg-accent-800;
+  }
+
+  .pub-nav-link.active {
+    @apply text-accent-900 font-semibold
+           dark:text-white;
+  }
+
+  /* Dashboard sidebar link */
+  .nav-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium
+           text-accent-500 transition-all duration-150
+           hover:text-accent-900 hover:bg-accent-100
+           dark:text-accent-400 dark:hover:text-accent-100 dark:hover:bg-accent-800;
+  }
+
+  .nav-link.active {
+    @apply text-accent-900 bg-accent-100 font-semibold
+           dark:text-white dark:bg-accent-800;
+  }
+
+  /* ── Cards ───────────────────────────────────────────────────────────── */
+
+  /* Main card — light mode has white bg, dark mode has elevated bg */
+  .card {
+    @apply bg-white border border-accent-200 rounded-2xl
+           dark:bg-accent-800 dark:border-accent-700;
+  }
+
+  /* Legacy alias kept for dashboard pages */
+  .glass-card {
+    @apply bg-white border border-accent-200 rounded-2xl
+           dark:bg-surface-dark-card dark:border-surface-dark-border;
+  }
+
+  /* Stat card */
+  .stat-card {
+    @apply card p-6 flex flex-col gap-2
+           hover:border-accent-300 transition-all duration-200
+           dark:hover:border-accent-600;
+  }
+
+  /* ── Badges ──────────────────────────────────────────────────────────── */
+  .role-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full
+           text-xs font-semibold border uppercase tracking-wide;
+  }
+
+  /* ── Section dividers ────────────────────────────────────────────────── */
+  .section-label {
+    @apply text-xs font-semibold text-accent-400 uppercase tracking-widest;
+  }
+}
+
+/* ── Utilities ────────────────────────────────────────────────────────────── */
+@layer utilities {
+  /* Staggered fade-in for lists */
+  .animate-stagger > * { animation: fade-in 0.4s ease-out forwards; opacity: 0; }
+  .animate-stagger > *:nth-child(1) { animation-delay: 0ms;   }
+  .animate-stagger > *:nth-child(2) { animation-delay: 75ms;  }
+  .animate-stagger > *:nth-child(3) { animation-delay: 150ms; }
+  .animate-stagger > *:nth-child(4) { animation-delay: 225ms; }
+  .animate-stagger > *:nth-child(5) { animation-delay: 300ms; }
+  .animate-stagger > *:nth-child(6) { animation-delay: 375ms; }
+
+  /* Subtle top gradient for sections */
+  .section-gradient {
+    background: linear-gradient(180deg, #f4f4f5 0%, #ffffff 100%);
+  }
+}
