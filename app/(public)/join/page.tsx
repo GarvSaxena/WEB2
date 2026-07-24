@@ -12,17 +12,17 @@ export const metadata: Metadata = {
 
 export default function JoinPage() {
   return (
-    <div className="mesh-bg min-h-screen">
+    <div className="bg-slate-50 min-h-screen">
       <div className="container-section py-16">
         {/* Hero */}
         <div className="text-center mb-14">
-          <p className="section-label mb-3">Become a part of us</p>
-          <h1 className="font-display text-5xl font-bold text-accent-900 mb-4">
-            Join <span className="gradient-text">EPMOC</span>
+          <p className="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-3">Become a part of us</p>
+          <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4">
+            Join EPMOC
           </h1>
-          <p className="text-accent-500 max-w-xl mx-auto text-lg">
+          <p className="text-slate-600 max-w-xl mx-auto text-lg">
             Fill in this form to express your interest. Our team will review your application
-            and reach out to you with the next steps.
+            and you can then sign in to your dashboard.
           </p>
         </div>
 

@@ -36,15 +36,15 @@ const SOCIAL = [
 
 export default function ContactPage() {
   return (
-    <div className="mesh-bg min-h-screen">
+    <div className="bg-slate-50 min-h-screen">
       <div className="container-section py-16">
         {/* Hero */}
         <div className="text-center mb-14">
-          <p className="section-label mb-3">We&apos;d love to hear from you</p>
-          <h1 className="font-display text-5xl font-bold text-accent-900 mb-4">
-            Contact <span className="gradient-text">Us</span>
+          <p className="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-3">We'd love to hear from you</p>
+          <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4">
+            Contact Us
           </h1>
-          <p className="text-accent-500 max-w-xl mx-auto">
+          <p className="text-slate-600 max-w-xl mx-auto">
             Have a question, partnership proposal, or just want to say hi? Drop us a message.
           </p>
         </div>
@@ -58,14 +58,14 @@ export default function ContactPage() {
                   <Icon className="w-5 h-5 text-indigo-600" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-accent-700 mb-0.5">{label}</p>
-                  <p className="text-sm text-accent-500 whitespace-pre-line">{value}</p>
+                  <p className="text-sm font-semibold text-slate-900 mb-0.5">{label}</p>
+                  <p className="text-sm text-slate-600 whitespace-pre-line">{value}</p>
                 </div>
               </div>
             ))}
 
             <div>
-              <p className="text-sm font-semibold text-accent-700 mb-3">Follow Us</p>
+              <p className="text-sm font-semibold text-slate-900 mb-3">Follow Us</p>
               <div className="flex gap-3">
                 {SOCIAL.map(({ icon: Icon, label, href }) => (
                   <a
@@ -73,7 +73,7 @@ export default function ContactPage() {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-xl bg-accent-100 flex items-center justify-center text-accent-600 hover:bg-accent-900 hover:text-white transition-all"
+                    className="w-10 h-10 rounded-xl bg-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-900 hover:text-white transition-all"
                     aria-label={label}
                   >
                     <Icon className="w-5 h-5" />

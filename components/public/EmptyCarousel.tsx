@@ -26,12 +26,12 @@ export function EmptyCarousel() {
 
   return (
     <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] items-center">
-      <div className="glass-card rounded-[2rem] border border-accent-200 p-7 sm:p-8 bg-white/95">
-        <p className="section-label mb-3">Carousel Placeholder</p>
-        <h3 className="font-display text-3xl sm:text-4xl font-bold text-accent-900">
+      <div className="card p-7 sm:p-8 bg-slate-900 border-slate-800 text-left">
+        <p className="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-3">Carousel Placeholder</p>
+        <h3 className="text-3xl sm:text-4xl font-bold text-white">
           Empty cards for future event content
         </h3>
-        <p className="mt-4 text-accent-500 leading-relaxed max-w-xl">
+        <p className="mt-4 text-slate-400 leading-relaxed max-w-xl">
           This section is set up as a 5-card carousel. Add your event text, images, or any
           other content later without changing the layout.
         </p>
@@ -40,7 +40,7 @@ export function EmptyCarousel() {
           <button
             type="button"
             onClick={goPrevious}
-            className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-accent-200 bg-white text-accent-900 transition-all hover:-translate-y-0.5 hover:shadow-md"
+            className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-slate-700 bg-slate-800 text-white transition-all hover:bg-slate-700"
             aria-label="Previous card"
           >
             <ChevronLeft className="h-5 w-5" />
@@ -48,12 +48,12 @@ export function EmptyCarousel() {
           <button
             type="button"
             onClick={goNext}
-            className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent-900 text-white transition-all hover:-translate-y-0.5 hover:shadow-md dark:bg-accent-50 dark:text-accent-900"
+            className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-slate-900 transition-all hover:bg-white"
             aria-label="Next card"
           >
             <ChevronRight className="h-5 w-5" />
           </button>
-          <div className="ml-2 text-sm text-accent-500">
+          <div className="ml-2 text-sm text-slate-500">
             {activeIndex + 1} of {totalCards}
           </div>
         </div>
@@ -78,12 +78,11 @@ export function EmptyCarousel() {
               key={card.id}
               type="button"
               onClick={() => setActiveIndex(card.id - 1)}
-              className={`absolute inset-0 rounded-[2rem] border border-accent-200 bg-white shadow-[0_24px_70px_rgba(15,23,42,0.08)] transition-all duration-500 ease-out overflow-hidden ${positionClass}`}
+              className={`absolute inset-0 rounded-[2rem] border border-slate-700 bg-slate-800 transition-all duration-500 ease-out overflow-hidden ${positionClass}`}
               aria-label={`Show placeholder card ${card.id}`}
             >
-              <div className={`h-full w-full bg-gradient-to-br ${card.tone}`}>
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.9),_transparent_42%),radial-gradient(circle_at_bottom_right,_rgba(15,23,42,0.04),_transparent_36%)]" />
-                <div className="absolute inset-5 rounded-[1.5rem] border border-dashed border-accent-200/80 bg-white/55 backdrop-blur-sm" />
+              <div className={`h-full w-full bg-gradient-to-br from-slate-800 to-slate-900`}>
+                <div className="absolute inset-5 rounded-[1.5rem] border border-dashed border-slate-600 bg-slate-800/50" />
               </div>
             </button>
           );

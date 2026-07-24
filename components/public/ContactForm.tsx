@@ -34,8 +34,8 @@ export default function ContactForm() {
           <div className="w-14 h-14 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
             <CheckCircle2 className="w-7 h-7 text-emerald-600" />
           </div>
-          <h3 className="font-display text-xl font-bold text-accent-900 mb-2">Message Sent!</h3>
-          <p className="text-accent-500">We&apos;ll get back to you as soon as possible.</p>
+          <h3 className="text-xl font-bold text-slate-900 mb-2">Message Sent!</h3>
+          <p className="text-slate-600">We'll get back to you as soon as possible.</p>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4">

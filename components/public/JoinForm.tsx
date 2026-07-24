@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Send, Loader2, CheckCircle2, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const DEPARTMENTS = ["Designing", "PR", "Social Media", "Volunteering", "Coverage", "Technical"];
 const BRANCHES = ["CSE", "DS", "CY", "IT", "ECE"];
@@ -68,24 +69,16 @@ export default function JoinForm() {
         <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-5">
           <CheckCircle2 className="w-8 h-8 text-emerald-600" />
         </div>
-        <h2 className="font-display text-2xl font-bold text-accent-900 mb-3">
+        <h2 className="text-2xl font-bold text-slate-900 mb-3">
           Application Received! 🎉
         </h2>
-        <p className="text-accent-500 mb-2">
-          Thank you for applying to EPMOC, <strong>{form.name}</strong>!
+        <p className="text-slate-600 mb-6">
+          Thank you for applying to EPMOC, <strong>{form.name}</strong>. Our team will review your application. You can now proceed to sign up for your account.
         </p>
-        <p className="text-accent-400 text-sm mb-6">
-          Your application is under review. We&apos;ll contact you at{" "}
-          <span className="font-medium text-accent-700">{form.instituteEmail}</span> once processed.
-        </p>
-        <div className="p-4 rounded-xl bg-indigo-50 border border-indigo-200 text-sm text-indigo-700 text-left">
-          <p className="font-semibold mb-2">What&apos;s next?</p>
-          <ol className="list-decimal list-inside space-y-1">
-            <li>Our team reviews your application</li>
-            <li>You&apos;ll receive an invitation email</li>
-            <li>Sign up to the portal with your institute email</li>
-            <li>Access your member dashboard 🚀</li>
-          </ol>
+        <div className="mt-8">
+          <Link href="/sign-up" className="btn-primary justify-center w-full max-w-xs mx-auto text-base py-3">
+            Proceed to Sign Up <ArrowRight className="w-4 h-4 ml-1" />
+          </Link>
         </div>
       </div>
     );
@@ -95,7 +88,7 @@ export default function JoinForm() {
     <div className="card p-8">
       <form onSubmit={handleSubmit} className="space-y-5">
         {error && (
-          <div className="rounded-xl bg-rose-50 border border-rose-200 px-4 py-3 text-sm text-rose-700">
+          <div className="rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
             {error}
           </div>
         )}
@@ -103,19 +96,19 @@ export default function JoinForm() {
         <div className="grid sm:grid-cols-2 gap-4">
           <div className="sm:col-span-2">
             <label className="label" htmlFor="join-name">
-              Full Name <span className="text-rose-500">*</span>
+              Full Name <span className="text-red-500">*</span>
             </label>
             <input id="join-name" name="name" value={form.name} onChange={handleChange} className="input" placeholder="e.g., Chirag Jain" required />
           </div>
           <div>
             <label className="label" htmlFor="join-email">
-              Institute Email <span className="text-rose-500">*</span>
+              Institute Email <span className="text-red-500">*</span>
             </label>
             <input id="join-email" name="instituteEmail" type="email" value={form.instituteEmail} onChange={handleChange} className="input" placeholder="XXXXX@iiitu.ac.in" required />
           </div>
           <div>
             <label className="label" htmlFor="join-phone">
-              Phone Number <span className="text-rose-500">*</span>
+              Phone Number <span className="text-red-500">*</span>
             </label>
             <input id="join-phone" name="phoneNumber" value={form.phoneNumber} onChange={handleChange} className="input" placeholder="10-digit mobile number" required />
           </div>
@@ -139,7 +132,7 @@ export default function JoinForm() {
           </div>
           <div className="sm:col-span-2">
             <label className="label" htmlFor="join-domain">
-              Skills / Domain <span className="text-rose-500">*</span>
+              Skills / Domain <span className="text-red-500">*</span>
             </label>
             <input id="join-domain" name="domain" value={form.domain} onChange={handleChange} className="input" placeholder="e.g., Photography, Web Dev, Event Management" required />
           </div>
@@ -153,13 +146,9 @@ export default function JoinForm() {
           {loading ? (
             <><Loader2 className="w-4 h-4 animate-spin" /> Submitting…</>
           ) : (
-            <>Submit Application <ArrowRight className="w-4 h-4" /></>
+            <>Submit Application <ArrowRight className="w-4 h-4 ml-1" /></>
           )}
         </button>
-
-        <p className="text-xs text-accent-400 text-center">
-          By submitting, you agree to be contacted by the EPMOC team via your institute email.
-        </p>
       </form>
     </div>
   );
