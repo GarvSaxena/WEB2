@@ -1,41 +1,43 @@
 /**
  * app/globals.css — Global Stylesheet
  *
- * Clean, neutral design system.
- * Light mode default. Dark mode via the .dark class on <html>.
+ * Design system for EPMOC:
+ *   - Light mode default for public pages
+ *   - Dashboard pages use white/slate for cards
+ *   - .dark class on <html> enables full dark mode
  */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ── CSS Custom Properties (Design Tokens) ──────────────────────────────── */
+/* ── CSS Custom Properties (Design Tokens) ────────────────────────────────── */
 :root {
   /* Light mode defaults */
-  --color-bg:       #ffffff;
-  --color-bg-subtle:#fafafa;
-  --color-bg-muted: #f4f4f5;
-  --color-border:   #e4e4e7;
-  --color-text:     #18181b;
-  --color-text-muted:#71717a;
-  --color-accent:   #18181b;
+  --color-bg:         #ffffff;
+  --color-bg-subtle:  #fafafa;
+  --color-bg-muted:   #f4f4f5;
+  --color-border:     #e4e4e7;
+  --color-text:       #18181b;
+  --color-text-muted: #71717a;
+  --color-accent:     #18181b;
+  --color-brand:      #6366f1;
 
   --font-sans:    var(--font-inter), system-ui, sans-serif;
   --font-display: var(--font-display), var(--font-inter), sans-serif;
 }
 
 .dark {
-  /* Dark mode overrides */
-  --color-bg:       #18181b;
-  --color-bg-subtle:#27272a;
-  --color-bg-muted: #3f3f46;
-  --color-border:   #3f3f46;
-  --color-text:     #fafafa;
-  --color-text-muted:#a1a1aa;
-  --color-accent:   #fafafa;
+  --color-bg:         #0f0f14;
+  --color-bg-subtle:  #16161e;
+  --color-bg-muted:   #1e1e28;
+  --color-border:     #2d2d3a;
+  --color-text:       #f0f0f5;
+  --color-text-muted: #8b8b9e;
+  --color-accent:     #f0f0f5;
 }
 
-/* ── Base Resets ─────────────────────────────────────────────────────────── */
+/* ── Base Resets ──────────────────────────────────────────────────────────── */
 @layer base {
   * {
     box-sizing: border-box;
@@ -50,7 +52,7 @@
     color: var(--color-text);
   }
 
-  /* Clean scrollbar */
+  /* Custom scrollbar */
   ::-webkit-scrollbar        { width: 5px; height: 5px; }
   ::-webkit-scrollbar-track  { background: var(--color-bg-subtle); }
   ::-webkit-scrollbar-thumb  { background: var(--color-border); border-radius: 3px; }
@@ -67,29 +69,26 @@
 
   /* ── Buttons ─────────────────────────────────────────────────────────── */
 
-  /* Primary: filled charcoal */
+  /* Primary: filled brand */
   .btn-primary {
-    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-lg
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-xl
            text-sm font-semibold text-white bg-accent-900
            border border-accent-900
            transition-all duration-150 ease-in-out
            hover:bg-accent-800 hover:border-accent-800
-           active:scale-[0.98]
-           disabled:opacity-40 disabled:cursor-not-allowed
-           dark:bg-accent-50 dark:text-accent-900 dark:border-accent-50
-           dark:hover:bg-white;
+           active:scale-[0.97]
+           disabled:opacity-40 disabled:cursor-not-allowed;
   }
 
   /* Secondary: outlined */
   .btn-secondary {
-    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-lg
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-xl
            text-sm font-semibold text-accent-800 bg-transparent
            border border-accent-300
            transition-all duration-150 ease-in-out
            hover:bg-accent-50 hover:border-accent-400
-           active:scale-[0.98]
-           dark:text-accent-200 dark:border-accent-700
-           dark:hover:bg-accent-800 dark:hover:border-accent-600;
+           active:scale-[0.97]
+           disabled:opacity-40 disabled:cursor-not-allowed;
   }
 
   /* Ghost: no border, subtle hover */
@@ -97,57 +96,56 @@
     @apply inline-flex items-center gap-1.5 px-3 py-2 rounded-lg
            text-sm font-medium text-accent-600 bg-transparent
            transition-all duration-150 ease-in-out
-           hover:bg-accent-100 hover:text-accent-900
-           dark:text-accent-400 dark:hover:bg-accent-800 dark:hover:text-accent-100;
+           hover:bg-accent-100 hover:text-accent-900;
+  }
+
+  /* Danger */
+  .btn-danger {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-xl
+           text-sm font-semibold text-white bg-rose-600
+           border border-rose-600
+           transition-all duration-150 ease-in-out
+           hover:bg-rose-700
+           active:scale-[0.97]
+           disabled:opacity-40 disabled:cursor-not-allowed;
   }
 
   /* ── Navigation ─────────────────────────────────────────────────────── */
 
-  /* Public nav link */
   .pub-nav-link {
     @apply relative px-3 py-1.5 text-sm font-medium text-accent-600
            rounded-md transition-all duration-150
-           hover:text-accent-900 hover:bg-accent-100
-           dark:text-accent-400 dark:hover:text-accent-100 dark:hover:bg-accent-800;
+           hover:text-accent-900 hover:bg-accent-100;
   }
 
   .pub-nav-link.active {
-    @apply text-accent-900 font-semibold
-           dark:text-white;
+    @apply text-accent-900 font-semibold bg-accent-100;
   }
 
-  /* Dashboard sidebar link */
   .nav-link {
-    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium
            text-accent-500 transition-all duration-150
-           hover:text-accent-900 hover:bg-accent-100
-           dark:text-accent-400 dark:hover:text-accent-100 dark:hover:bg-accent-800;
+           hover:text-accent-900 hover:bg-accent-100;
   }
 
   .nav-link.active {
-    @apply text-accent-900 bg-accent-100 font-semibold
-           dark:text-white dark:bg-accent-800;
+    @apply text-accent-900 bg-accent-900 text-white font-semibold;
   }
 
   /* ── Cards ───────────────────────────────────────────────────────────── */
 
-  /* Main card — light mode has white bg, dark mode has elevated bg */
   .card {
-    @apply bg-white border border-accent-200 rounded-2xl
-           dark:bg-accent-800 dark:border-accent-700;
+    @apply bg-white border border-accent-200 rounded-2xl;
   }
 
-  /* Legacy alias kept for dashboard pages */
+  /* Legacy alias — dashboard pages use this class extensively */
   .glass-card {
-    @apply bg-white border border-accent-200 rounded-2xl
-           dark:bg-surface-dark-card dark:border-surface-dark-border;
+    @apply bg-white border border-accent-200 rounded-2xl;
   }
 
-  /* Stat card */
   .stat-card {
     @apply card p-6 flex flex-col gap-2
-           hover:border-accent-300 transition-all duration-200
-           dark:hover:border-accent-600;
+           hover:border-accent-300 hover:shadow-sm transition-all duration-200;
   }
 
   /* ── Badges ──────────────────────────────────────────────────────────── */
@@ -156,22 +154,113 @@
            text-xs font-semibold border uppercase tracking-wide;
   }
 
-  /* ── Section dividers ────────────────────────────────────────────────── */
+  /* ── Section labels ──────────────────────────────────────────────────── */
   .section-label {
     @apply text-xs font-semibold text-accent-400 uppercase tracking-widest;
+  }
+
+  /* ── Form inputs ─────────────────────────────────────────────────────── */
+  .input {
+    @apply w-full rounded-xl border border-accent-200 bg-white px-4 py-2.5
+           text-sm text-accent-900 placeholder:text-accent-400
+           focus:outline-none focus:ring-2 focus:ring-accent-900/20 focus:border-accent-400
+           transition-all duration-150;
+  }
+
+  .select {
+    @apply input appearance-none cursor-pointer;
+  }
+
+  .textarea {
+    @apply input resize-none;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-accent-700 mb-1.5;
+  }
+
+  /* ── Dividers ────────────────────────────────────────────────────────── */
+  .surface-border {
+    @apply border-accent-200;
   }
 }
 
 /* ── Utilities ────────────────────────────────────────────────────────────── */
 @layer utilities {
+
+  /* Mesh background — used on landing page hero */
+  .mesh-bg {
+    background-color: #ffffff;
+    background-image:
+      radial-gradient(at 20% 10%, rgba(99,102,241,0.07) 0px, transparent 55%),
+      radial-gradient(at 80% 0%,  rgba(139,92,246,0.05) 0px, transparent 55%),
+      radial-gradient(at 5%  60%, rgba(99,102,241,0.04) 0px, transparent 55%),
+      radial-gradient(at 90% 80%, rgba(167,139,250,0.04) 0px, transparent 55%);
+    min-height: 100%;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 60%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Subtle surface border helper */
+  .surface-border { border-color: var(--color-border); }
+
+  /* ── Animations ────────────────────────────────────────────────────── */
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-glow {
+    animation: glow 3s ease-in-out infinite;
+  }
+
+  .animate-slide-down {
+    animation: slide-down 0.25s ease-out forwards;
+  }
+
+  .animate-slide-right {
+    animation: slide-right 0.3s ease-out forwards;
+  }
+
   /* Staggered fade-in for lists */
   .animate-stagger > * { animation: fade-in 0.4s ease-out forwards; opacity: 0; }
   .animate-stagger > *:nth-child(1) { animation-delay: 0ms;   }
-  .animate-stagger > *:nth-child(2) { animation-delay: 75ms;  }
-  .animate-stagger > *:nth-child(3) { animation-delay: 150ms; }
-  .animate-stagger > *:nth-child(4) { animation-delay: 225ms; }
-  .animate-stagger > *:nth-child(5) { animation-delay: 300ms; }
-  .animate-stagger > *:nth-child(6) { animation-delay: 375ms; }
+  .animate-stagger > *:nth-child(2) { animation-delay: 80ms;  }
+  .animate-stagger > *:nth-child(3) { animation-delay: 160ms; }
+  .animate-stagger > *:nth-child(4) { animation-delay: 240ms; }
+  .animate-stagger > *:nth-child(5) { animation-delay: 320ms; }
+  .animate-stagger > *:nth-child(6) { animation-delay: 400ms; }
+  .animate-stagger > *:nth-child(7) { animation-delay: 480ms; }
+  .animate-stagger > *:nth-child(8) { animation-delay: 560ms; }
+
+  /* ── Keyframes ─────────────────────────────────────────────────────── */
+
+  @keyframes fade-in {
+    0%   { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slide-down {
+    0%   { opacity: 0; transform: translateY(-8px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slide-right {
+    0%   { opacity: 0; transform: translateX(100%); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes glow {
+    0%, 100% { box-shadow: 0 0 20px 0px rgba(99,102,241,0.12); }
+    50%       { box-shadow: 0 0 40px 8px rgba(99,102,241,0.22); }
+  }
 
   /* Subtle top gradient for sections */
   .section-gradient {
