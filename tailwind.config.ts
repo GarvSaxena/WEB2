@@ -92,6 +92,10 @@ const config: Config = {
           "0%":   { transform: "rotate(0deg)" },
           "100%": { transform: "rotate(360deg)" },
         },
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
       },
       animation: {
         "fade-in":    "fade-in 0.4s ease-out forwards",
@@ -102,6 +106,7 @@ const config: Config = {
         pulse:        "pulse 2s cubic-bezier(0.4,0,0.6,1) infinite",
         shimmer:      "shimmer 2s linear infinite",
         "spin-slow":  "spin-slow 8s linear infinite",
+        marquee:      "marquee 25s linear infinite",
       },
       // ── Border Radius ─────────────────────────────────────────
       borderRadius: {

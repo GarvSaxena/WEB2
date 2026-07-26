@@ -27,7 +27,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "EPMOC — Event Planning Management & Organization Club",
+    default: "EPMOC — Event Planning, Management & Organising Council",
     template: "%s | EPMOC",
   },
   description:
@@ -51,7 +51,7 @@ export default function RootLayout({
         className={`${inter.variable} ${plusJakarta.variable}`}
         suppressHydrationWarning
       >
-        <body className="bg-slate-50 text-slate-900 antialiased font-sans min-h-screen">
+        <body className="bg-slate-50 text-slate-900 font-sans min-h-screen">
           {children}
         </body>
       </html>

@@ -52,8 +52,8 @@ export default function AboutPage() {
             About EPMOC
           </h1>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            The Engineering Professionals &amp; Management Organization Club — bridging the gap
-            between engineering knowledge and management excellence at IIIT Una.
+            Event Planning, Management &amp; Organising Council — bridging the gap
+            between technical knowledge and management excellence at IIIT Una.
           </p>
         </section>
 

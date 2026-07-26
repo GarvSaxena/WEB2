@@ -119,18 +119,13 @@ export function DashboardSidebar({
         {/* Header: Logo + collapse toggle */}
         <div className="flex items-center justify-between border-b border-slate-200 px-4 py-4">
           {!collapsed && (
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center flex-shrink-0">
-                <span className="text-white text-xs font-bold">EP</span>
-              </div>
-              <span className="font-display font-bold text-slate-900 text-sm tracking-tight">
-                EPMOC
-              </span>
+            <Link href="/" className="flex items-center gap-2 group px-1">
+              <img src="/epmoc-logo.png" alt="EPMOC Logo" className="h-8 w-auto object-contain transition-opacity group-hover:opacity-80" />
             </Link>
           )}
           {collapsed && (
-            <div className="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center mx-auto">
-              <span className="text-white text-xs font-bold">EP</span>
+            <div className="mx-auto flex justify-center">
+              <img src="/epmoc-logo.png" alt="EPMOC Logo" className="h-8 w-auto object-contain" />
             </div>
           )}
           <button
