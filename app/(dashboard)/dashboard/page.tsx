@@ -124,14 +124,20 @@ export default async function DashboardOverviewPage() {
             bg: "bg-amber-50",
           },
         ].map(({ label, value, icon: Icon, color, bg }) => (
-          <div key={label} className="stat-card">
-            <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${bg}`}>
-              <Icon className={`w-5 h-5 ${color}`} />
+          <div key={label} className="card p-5 flex flex-col justify-between h-32">
+            <div className="flex items-center gap-3">
+              <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${bg} flex-shrink-0`}>
+                <Icon className={`w-5 h-5 ${color}`} />
+              </div>
+              <span className="text-sm font-semibold text-slate-500 line-clamp-1">
+                {label}
+              </span>
             </div>
-            <span className="text-3xl font-bold font-display text-slate-900">
-              {value}
-            </span>
-            <span className="text-sm text-slate-500">{label}</span>
+            <div className="flex justify-center items-center flex-1">
+              <span className="text-4xl font-bold font-display text-slate-900">
+                {value}
+              </span>
+            </div>
           </div>
         ))}
       </div>
@@ -218,10 +224,15 @@ export default async function DashboardOverviewPage() {
           </div>
           <div className="grid sm:grid-cols-3 gap-4">
             {data.deptStats.map(({ _id, count }) => (
-              <div key={_id} className="card p-5">
-                <p className="font-semibold text-slate-900">{_id}</p>
-                <p className="text-2xl font-bold text-slate-900 mt-1">{count}</p>
-                <p className="text-xs text-slate-500">member{count !== 1 ? "s" : ""}</p>
+              <div key={_id} className="card p-5 flex flex-col justify-between h-32">
+                <span className="text-sm font-semibold text-slate-500 line-clamp-1">
+                  {_id}
+                </span>
+                <div className="flex justify-center items-center flex-1">
+                  <span className="text-4xl font-bold font-display text-slate-900">
+                    {count}
+                  </span>
+                </div>
               </div>
             ))}
           </div>

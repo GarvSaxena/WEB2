@@ -45,16 +45,10 @@ export function DashboardHeader() {
     <header className="flex items-center justify-between px-6 lg:px-8 py-4
                        border-b border-surface-border bg-surface/60 backdrop-blur-sm
                        sticky top-0 z-10">
-      {/* ── Page Title ───────────────────────────────────────────── */}
       <div>
-        <h2 className="font-display font-bold text-xl text-white">
+        <h2 className="font-display font-bold text-2xl text-slate-900 dark:text-white">
           {pageTitle}
         </h2>
-        {pathname === "/dashboard" && user && (
-          <p className="text-sm text-gray-500 mt-0.5">
-            {getGreeting()}, {user.firstName ?? user.username ?? "there"} 👋
-          </p>
-        )}
       </div>
 
       {/* ── Actions ─────────────────────────────────────────────── */}
