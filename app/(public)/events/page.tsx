@@ -14,7 +14,7 @@ export default async function EventsPage() {
     await connectDB();
     events = await Event.find({ isPublished: true })
       .sort({ date: 1 })
-      .limit(12)
+      .limit(24)
       .lean();
   } catch {
     events = [];
