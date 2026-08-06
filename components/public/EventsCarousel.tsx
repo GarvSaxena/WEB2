@@ -117,13 +117,17 @@ export function EventsCarousel({ events }: { events?: Array<{ id: any; title: st
           >
             {/* Image Section */}
             <div className="relative h-48 w-full bg-slate-100 flex-shrink-0">
-              <Image
-                src={card.image}
-                alt={card.title}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 320px"
-              />
+              {card.image ? (
+                <Image
+                  src={card.image}
+                  alt={card.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 320px"
+                />
+              ) : (
+                <div className="h-full w-full flex items-center justify-center text-slate-400">No image</div>
+              )}
             </div>
 
             {/* Text Section */}
