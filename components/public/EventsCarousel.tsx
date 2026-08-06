@@ -31,17 +31,18 @@ const EVENTS = [
   },
 ];
 
-export function EventsCarousel() {
+export function EventsCarousel({ events }: { events?: Array<{ id: any; title: string; description: string; image?: string | null; date: string; venue: string; }> }) {
+  const items = events && events.length > 0 ? events : EVENTS;
   const [activeIndex, setActiveIndex] = useState(0);
-  const totalCards = EVENTS.length;
+  const totalCards = items.length;
 
   const slides = useMemo(
     () =>
-      EVENTS.map((event, index) => ({
+      items.map((event, index) => ({
         ...event,
         offset: (index - activeIndex + totalCards) % totalCards,
       })),
-    [activeIndex, totalCards]
+    [activeIndex, totalCards, items]
   );
 
   const scrollLeft = () => {
@@ -93,7 +94,7 @@ export function EventsCarousel() {
         className="flex-1 flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 hide-scrollbar items-stretch"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
-        {EVENTS.map((card) => (
+        {items.map((card) => (
           <div
             key={card.id}
             className="snap-start flex-none w-[85vw] sm:w-[320px] rounded-2xl border border-slate-200 bg-white shadow-sm flex flex-col overflow-hidden"
