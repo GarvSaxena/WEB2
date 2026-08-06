@@ -4,51 +4,8 @@ import { useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight, CalendarDays, MapPin } from "lucide-react";
 import Image from "next/image";
 
-const EVENTS = [
-  {
-    id: 1,
-    title: "Tech Symposium 2025",
-    description: "A 48-hour hackathon bringing together the best minds to solve real-world problems. Includes workshops on Web3 and AI.",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop",
-    date: "15 Apr 2025",
-    venue: "Main Auditorium",
-  },
-  {
-    id: 2,
-    title: "Management Workshop Series",
-    description: "Learn the fundamentals of product management and agile methodologies from industry experts and guest speakers.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop",
-    date: "20 Nov 2024",
-    venue: "Seminar Hall A",
-  },
-  {
-    id: 3,
-    title: "Cultural Fest - MRIDANG",
-    description: "Annual cultural festival featuring music, dance, and art competitions across departments. A night to remember!",
-    image: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=2070&auto=format&fit=crop",
-    date: "05 Oct 2024",
-    venue: "Open Air Theatre",
-  },
-  {
-    id: 4,
-    title: "Alumni Meet 2024",
-    description: "Connecting past and present students for networking, mentoring, and celebrating the legacy of EPMOC.",
-    image: "https://images.unsplash.com/photo-1515169067868-5387ec356754?q=80&w=2070&auto=format&fit=crop",
-    date: "12 Sep 2024",
-    venue: "IIIT Una Campus",
-  },
-  {
-    id: 5,
-    title: "Design Thinking Bootcamp",
-    description: "An intensive 2-day bootcamp focused on UI/UX principles, user research, and wireframing for aspiring designers.",
-    image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=2070&auto=format&fit=crop",
-    date: "28 Aug 2024",
-    venue: "Design Lab",
-  },
-];
-
 export function EventsCarousel({ events }: { events?: Array<{ id: any; title: string; description: string; image?: string | null; date: string; venue: string; }> }) {
-  const items = events && events.length > 0 ? events : EVENTS;
+  const items = events ?? [];
   const [activeIndex, setActiveIndex] = useState(0);
   const totalCards = items.length;
 
